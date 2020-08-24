@@ -12,7 +12,7 @@ describe('Headeline component', () => {
     describe('Checking PropTypes', ()=> {
         it('Should not throw a warning', () => {
             const expectedProps = {
-                header: 'Test header',
+                header: 3,
                 desc: 'Test desc'
             };
 
