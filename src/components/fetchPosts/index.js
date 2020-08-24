@@ -24,5 +24,6 @@ export default class GlobalButton extends Component {
 }
 
 GlobalButton.propTypes = {
-    buttoText: PropTypes.string
+    buttonText: PropTypes.string,
+    emitEvent: PropTypes.func
 }

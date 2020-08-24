@@ -18,16 +18,18 @@ describe('GlobalButton button', () => {
     });
 
     describe('Has props', () => {
-        let wrapper;
         const setUp = (props={}) => {
             const component = shallow(<GlobalButton {...props}/>);
             return component;
         };
 
+        let wrapper;
+        let mockFunc;
         beforeEach(() => {
+            mockFunc = jest.fn();
             const props = {
                 buttonText: 'Text',
-                emitEvent: () => {}
+                emitEvent: mockFunc
             };
             wrapper = setUp(props);
         });
@@ -35,6 +37,13 @@ describe('GlobalButton button', () => {
         it('Should render a button', () => {
             const button = findByTestAtrr(wrapper, 'btn');
             expect(button.length).toBe(1);
+        });
+
+        it('Should simulate button clicks', () => {
+            const button = findByTestAtrr(wrapper, 'btn');
+            button.simulate('click');
+            const callbacks = mockFunc.mock.calls.length;
+            expect(callbacks).toBe(1);
         });
     });
 });
